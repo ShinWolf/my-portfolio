@@ -1,6 +1,8 @@
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
+import Skills from "./components/Skills";
+
 function App() {
   const projectsData = [
     {
@@ -25,11 +27,26 @@ function App() {
       link: "#",
     },
   ];
+
+  const skillsData = {
+    frontend: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Vue.js"],
+    backend: [
+      "Node.js",
+      "Express",
+      "Python",
+      "Django",
+      "PostgreSQL",
+      "MongoDB",
+    ],
+    tools: ["Git", "Docker", "AWS", "CI/CD", "REST APIs"],
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-gray-100">
       <Navbar />
       <Hero />
       <Projects projects={projectsData} />
+      <Skills skills={skillsData} />
     </div>
   );
 }
