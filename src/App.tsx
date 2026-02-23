@@ -1,3 +1,4 @@
+import Experience from "./components/Experiences";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
@@ -41,12 +42,30 @@ function App() {
     tools: ["Git", "Docker", "AWS", "CI/CD", "REST APIs"],
   };
 
+  const experienceData = [
+    {
+      role: "Développeur Full Stack - Alternance",
+      company: "TechCorp Solutions",
+      period: "2022 - 2025",
+      description:
+        "Développement d'applications web, maintenance et optimisation de bases de données, participation aux sprints agiles",
+    },
+    {
+      role: "Stage Développeur Web",
+      company: "StartupWeb",
+      period: "2021 - 2022",
+      description:
+        "Création de composants React réutilisables, intégration d'APIs REST, tests unitaires",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-gray-100">
       <Navbar />
       <Hero />
       <Projects projects={projectsData} />
       <Skills skills={skillsData} />
+      <Experience experience={experienceData} />
     </div>
   );
 }
