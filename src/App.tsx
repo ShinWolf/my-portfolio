@@ -9,55 +9,79 @@ import Skills from "./components/Skills";
 function App() {
   const projectsData = [
     {
-      title: "Plateforme E-commerce",
+      title: "NovaBank API (SOON)",
       description:
-        "Application complète avec panier, paiement Stripe et dashboard admin",
-      tech: ["React", "Node.js", "MongoDB", "Stripe"],
+        "API bancaire complète avec gestion utilisateurs, comptes, virements, 2FA et historique, sécurisée avec JWT et Spring Security.",
+      tech: [
+        "Java 25",
+        "Spring Boot 3+",
+        "PostgreSQL",
+        "Spring Security",
+        "JWT",
+        "Flyway",
+        "Swagger",
+      ],
       link: "#",
     },
     {
-      title: "Gestionnaire de Projets",
+      title: "NovaBank UI (SOON)",
       description:
-        "Outil collaboratif de gestion de tâches avec système de notifications en temps réel",
-      tech: ["Next.js", "TypeScript", "PostgreSQL", "Socket.io"],
+        "Interface utilisateur web responsive pour gérer comptes, virements et notifications, avec Angular Material et NgRx.",
+      tech: [
+        "Angular 18+",
+        "Angular Material",
+        "NgRx",
+        "Responsive Design",
+        "HTTP Interceptors",
+        "Guards de routes",
+      ],
       link: "#",
     },
     {
-      title: "API REST Analytics",
+      title: "TaskManager (SOON)",
       description:
-        "Backend pour analyse de données avec authentification JWT et rate limiting",
-      tech: ["Python", "Django", "Redis", "Docker"],
+        "Application web complète type Jira pour gérer projets, tickets, utilisateurs, rôles, commentaires et notifications, avec API sécurisée et interface responsive.",
+      tech: [
+        "Java 25",
+        "Spring Boot 3+",
+        "PostgreSQL",
+        "Spring Security",
+        "JWT",
+        "Flyway",
+        "Swagger",
+        "React",
+      ],
       link: "#",
     },
   ];
 
   const skillsData = {
-    frontend: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Vue.js"],
-    backend: [
-      "Node.js",
-      "Express",
-      "Python",
-      "Django",
-      "PostgreSQL",
-      "MongoDB",
-    ],
-    tools: ["Git", "Docker", "AWS", "CI/CD", "REST APIs"],
+    frontend: ["TypeScript", "React", "Angular", "Tailwind CSS", "Flutter"],
+    backend: ["Node.js", "Express", "Fastify", "Java", "Spring", "PostgreSQL"],
+    tools: ["Git", "Docker", "CI/CD", "REST APIs"],
   };
 
   const experienceData = [
     {
-      role: "Développeur Full Stack - Alternance",
-      company: "TechCorp Solutions",
-      period: "2022 - 2025",
+      role: "Développeur Full-Stack - Alternance",
+      company: "Worldline, Seclin",
+      period: "Sept 2022 - Sept 2025",
       description:
-        "Développement d'applications web, maintenance et optimisation de bases de données, participation aux sprints agiles",
+        "Participation à l'évolution de projets existants, ajout de fonctionnalités et amélioration de l'ergonomie. Renforcement de la maintenabilité du code, correction de failles de sécurité, optimisation des performances. Utilisation de JSP, EmberJS pour le front-end, Spring Boot pour le back-end, gestion de bases de données et déploiement via Docker.",
     },
     {
-      role: "Stage Développeur Web",
-      company: "StartupWeb",
-      period: "2021 - 2022",
+      role: "Développeur - Stage",
+      company: "GameWork, Somain",
+      period: "Janv 2022 - Févr 2022",
       description:
-        "Création de composants React réutilisables, intégration d'APIs REST, tests unitaires",
+        "Réalisation d'un gestionnaire de fichiers pour stocker et partager tous types de documents (vidéo, photo, ODT, PDF). Découverte et utilisation de Node.js et Socket.io.",
+    },
+    {
+      role: "Développeur - Stage",
+      company: "GameWork, Somain",
+      period: "Mai 2021 - Juin 2021",
+      description:
+        "Création d'un site internet en PHP, JS et CSS. Découverte de technologies comme SASS et BEM pour l'architecture CSS.",
     },
   ];
 
