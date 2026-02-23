@@ -1,3 +1,4 @@
+import Contact from "./components/Contact";
 import Experience from "./components/Experiences";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
@@ -66,6 +67,7 @@ function App() {
       <Projects projects={projectsData} />
       <Skills skills={skillsData} />
       <Experience experience={experienceData} />
+      <Contact />
     </div>
   );
 }
