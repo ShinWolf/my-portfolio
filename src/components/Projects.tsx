@@ -14,41 +14,44 @@ interface ProjectsProps {
 
 const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   return (
-    <section id="projets" className="py-20 px-6">
+    <section id="projets" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-          Projets Récents
-        </h2>
-        <div className="grid md:grid-cols-3 gap-8">
+        <h2 className="text-3xl font-bold mb-2 text-white">Projets Récents</h2>
+        <div className="w-12 h-1 bg-amber-400 mb-12"></div>
+        <div className="grid md:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/20"
+              className="bg-zinc-800 rounded-xl p-6 border border-zinc-700 hover:border-amber-400/50 transition-all duration-300 flex flex-col"
             >
-              <h3 className="text-xl font-bold mb-3 text-cyan-400">
+              <h3 className="text-lg font-bold mb-3 text-white">
                 {project.title}
               </h3>
-              <p className="text-gray-300 mb-4 text-sm leading-relaxed">
+              <p className="text-zinc-400 mb-4 text-sm leading-relaxed flex-1">
                 {project.description}
               </p>
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-2 mb-5">
                 {project.tech.map((tech, i) => (
                   <span
                     key={i}
-                    className="px-3 py-1 bg-slate-700/50 rounded-full text-xs text-cyan-300 border border-cyan-500/30"
+                    className="px-2 py-1 bg-zinc-700 rounded text-xs text-zinc-300"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
-              <a
-                href={project.link}
-                className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Voir le projet <FiExternalLink className="w-4 h-4" />
-              </a>
+              {project.link !== "#" ? (
+                <a
+                  href={project.link}
+                  className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors text-sm font-medium"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Voir le projet <FiExternalLink className="w-4 h-4" />
+                </a>
+              ) : (
+                <span className="text-zinc-600 text-sm font-medium">Bientôt disponible</span>
+              )}
             </div>
           ))}
         </div>
