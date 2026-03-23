@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eric Fief — Développeur Full-Stack</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #0d0f12;
+        --paper: #f7f5f0;
+        --cream: #ede9e0;
+        --accent: #c8553d;
+        --accent-glow: #e07357;
+        --slate: #3a3d45;
+        --muted: #7a7d85;
+        --teal: #2a7d6e;
+        --sidebar-bg: #0d0f12;
+        --sidebar-text: #c5c3bc;
+        --sidebar-heading: #f7f5f0;
+        --tag-bg: rgba(200, 85, 61, 0.12);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 11.5px;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--cream);
+        color: var(--ink);
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100vh;
+        padding: 20px 0;
+      }
+
+      /* ===== A4 WRAPPER ===== */
+      .cv-wrapper {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        width: 210mm;
+        height: 297mm;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+      }
+
+      /* ===== SIDEBAR ===== */
+      .sidebar {
+        background: var(--sidebar-bg);
+        padding: 28px 22px 24px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .sidebar::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(to bottom, var(--accent), var(--teal), transparent);
+      }
+
+      .avatar-zone {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .avatar {
+        width: 76px;
+        height: 76px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent), var(--teal));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 10px;
+        box-shadow: 0 8px 24px rgba(200, 85, 61, 0.25);
+      }
+
+      .avatar-initials {
+        font-family: "Playfair Display", serif;
+        font-size: 1.7rem;
+        font-weight: 900;
+        color: white;
+        letter-spacing: 1px;
+      }
+
+      .sidebar-name {
+        font-family: "Playfair Display", serif;
+        font-size: 0.85rem;
+        color: var(--sidebar-heading);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 3px;
+      }
+
+      .sidebar-role {
+        font-size: 0.6rem;
+        color: var(--accent-glow);
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+
+      .sb-section {
+        margin-bottom: 20px;
+      }
+
+      .sb-title {
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 10px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid rgba(200, 85, 61, 0.2);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .sb-title::before {
+        content: "";
+        width: 5px;
+        height: 5px;
+        background: var(--accent);
+        border-radius: 1px;
+        transform: rotate(45deg);
+        flex-shrink: 0;
+      }
+
+      .sb-info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 8px;
+        font-size: 0.76rem;
+        color: var(--sidebar-text);
+        line-height: 1.45;
+      }
+
+      .sb-info-icon {
+        width: 13px;
+        height: 13px;
+        flex-shrink: 0;
+        margin-top: 2px;
+        opacity: 0.5;
+      }
+
+      .skills-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+
+      .skill-tag {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.65rem;
+        font-weight: 500;
+        padding: 3px 9px;
+        border-radius: 2px;
+        background: rgba(200, 85, 61, 0.1);
+        border: 1px solid rgba(200, 85, 61, 0.2);
+        color: var(--accent-glow);
+      }
+
+      .skill-tag.highlight {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+      }
+
+      .quality-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 7px;
+        font-size: 0.76rem;
+        color: var(--sidebar-text);
+      }
+
+      .quality-dot {
+        width: 4px;
+        height: 4px;
+        background: var(--accent);
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      .lang-item {
+        margin-bottom: 11px;
+      }
+
+      .lang-label {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.76rem;
+        color: var(--sidebar-text);
+        margin-bottom: 5px;
+      }
+
+      .lang-level {
+        font-size: 0.65rem;
+        color: var(--muted);
+      }
+
+      .lang-bar {
+        height: 3px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+
+      .lang-bar-fill {
+        height: 100%;
+        border-radius: 2px;
+        background: linear-gradient(90deg, var(--accent), var(--teal));
+      }
+
+      .interest-item {
+        font-size: 0.76rem;
+        color: var(--sidebar-text);
+        margin-bottom: 7px;
+        padding-left: 14px;
+        position: relative;
+        line-height: 1.45;
+      }
+
+      .interest-item::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+        font-size: 0.68rem;
+      }
+
+      /* ===== MAIN CONTENT ===== */
+      .main-content {
+        background: var(--paper);
+        padding: 40px 42px 40px;
+        overflow: hidden;
+      }
+
+      .main-header {
+        margin-bottom: 26px;
+      }
+
+      .main-name {
+        font-family: "Playfair Display", serif;
+        font-size: 2.2rem;
+        font-weight: 900;
+        color: var(--ink);
+        line-height: 1;
+        letter-spacing: -0.5px;
+        margin-bottom: 4px;
+      }
+
+      .main-name span {
+        color: var(--accent);
+      }
+
+      .main-title {
+        font-size: 0.72rem;
+        font-weight: 400;
+        color: var(--muted);
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+
+      .main-title::after {
+        content: "";
+        display: block;
+        width: 48px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--accent), var(--teal));
+        margin-top: 8px;
+        border-radius: 2px;
+      }
+
+      .profile-text {
+        font-size: 0.82rem;
+        line-height: 1.85;
+        color: var(--slate);
+        font-weight: 300;
+      }
+
+      .profile-text strong {
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      .section {
+        margin-bottom: 26px;
+      }
+
+      .section-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .section-title::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, var(--cream), transparent);
+      }
+
+      .section-title .number {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.62rem;
+        color: var(--accent);
+        font-weight: 500;
+      }
+
+      .exp-card {
+        position: relative;
+        padding: 16px 18px;
+        margin-bottom: 14px;
+        background: white;
+        border-radius: 4px;
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.03);
+      }
+
+      .exp-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, var(--accent), var(--teal));
+        border-radius: 2px 0 0 2px;
+      }
+
+      .exp-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 2px;
+        gap: 6px;
+      }
+
+      .exp-role {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--ink);
+      }
+
+      .exp-period {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.6rem;
+        color: var(--accent);
+        background: var(--tag-bg);
+        padding: 2px 7px;
+        border-radius: 2px;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+
+      .exp-company {
+        font-size: 0.7rem;
+        color: var(--muted);
+        margin-bottom: 2px;
+      }
+
+      .exp-duration {
+        font-size: 0.62rem;
+        color: var(--teal);
+        font-weight: 500;
+        margin-bottom: 6px;
+      }
+
+      .exp-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .exp-list li {
+        font-size: 0.73rem;
+        color: var(--slate);
+        line-height: 1.6;
+        padding-left: 12px;
+        margin-bottom: 6px;
+        position: relative;
+        font-weight: 300;
+      }
+
+      .exp-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 8px;
+        width: 4px;
+        height: 1px;
+        background: var(--accent);
+      }
+
+      .edu-grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      .edu-card {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: start;
+        gap: 8px;
+        padding: 14px 18px;
+        background: white;
+        border-radius: 4px;
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+      }
+
+      .edu-diploma {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--ink);
+        margin-bottom: 2px;
+      }
+
+      .edu-school {
+        font-size: 0.65rem;
+        color: var(--muted);
+        font-style: italic;
+      }
+
+      .edu-year {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.6rem;
+        color: var(--accent);
+        font-weight: 500;
+        white-space: nowrap;
+        padding-top: 2px;
+      }
+
+      /* ===== PRINT ===== */
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+
+      @media print {
+        html {
+          font-size: 11.5px;
+        }
+        body {
+          margin: 0;
+          padding: 0;
+          background: white;
+          display: block;
+        }
+        .cv-wrapper {
+          box-shadow: none;
+          width: 210mm;
+          height: 297mm;
+        }
+        .sidebar {
+          print-color-adjust: exact;
+          -webkit-print-color-adjust: exact;
+        }
+        .skill-tag.highlight {
+          print-color-adjust: exact;
+          -webkit-print-color-adjust: exact;
+        }
+        .exp-card::before {
+          print-color-adjust: exact;
+          -webkit-print-color-adjust: exact;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cv-wrapper">
+      <!-- ===== SIDEBAR ===== -->
+      <aside class="sidebar">
+        <div class="avatar-zone">
+          <div class="avatar">
+            <span class="avatar-initials">EF</span>
+          </div>
+          <div class="sidebar-name">Eric Fief</div>
+          <div class="sidebar-role">Full-Stack Developer</div>
+        </div>
+
+        <div class="sb-section">
+          <div class="sb-title">Contact</div>
+          <div class="sb-info-item">
+            <svg class="sb-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            <span>158 rue Sorriaux, Hénin-Beaumont 62110</span>
+          </div>
+          <div class="sb-info-item">
+            <svg class="sb-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            <span>06 67 03 50 91</span>
+          </div>
+          <div class="sb-info-item">
+            <svg class="sb-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            <span>ericfief.pro@gmail.com</span>
+          </div>
+          <div class="sb-info-item">
+            <svg class="sb-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            <span>30 mars 2002 · Permis B</span>
+          </div>
+        </div>
+
+        <div class="sb-section">
+          <div class="sb-title">Stack technique</div>
+          <div class="skills-grid">
+            <span class="skill-tag highlight">Java</span>
+            <span class="skill-tag highlight">Spring Boot</span>
+            <span class="skill-tag">NodeJS</span>
+            <span class="skill-tag">Fastify</span>
+            <span class="skill-tag">Angular</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">PHP</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">CSS</span>
+          </div>
+        </div>
+
+        <div class="sb-section">
+          <div class="sb-title">Qualités</div>
+          <div class="quality-item"><span class="quality-dot"></span> Autonomie</div>
+          <div class="quality-item"><span class="quality-dot"></span> Adaptabilité</div>
+          <div class="quality-item"><span class="quality-dot"></span> Travail en équipe</div>
+          <div class="quality-item"><span class="quality-dot"></span> Rigueur</div>
+          <div class="quality-item"><span class="quality-dot"></span> Esprit d'analyse</div>
+          <div class="quality-item"><span class="quality-dot"></span> Curiosité</div>
+        </div>
+
+        <div class="sb-section">
+          <div class="sb-title">Langues</div>
+          <div class="lang-item">
+            <div class="lang-label"><span>Français</span><span class="lang-level">Natif</span></div>
+            <div class="lang-bar"><div class="lang-bar-fill" style="width: 100%"></div></div>
+          </div>
+          <div class="lang-item">
+            <div class="lang-label"><span>Anglais</span><span class="lang-level">Notions</span></div>
+            <div class="lang-bar"><div class="lang-bar-fill" style="width: 40%"></div></div>
+          </div>
+        </div>
+
+        <div class="sb-section">
+          <div class="sb-title">Centres d'intérêt</div>
+          <div class="interest-item">Football en club (12 ans)</div>
+          <div class="interest-item">Projets perso (jeux, apps mobiles)</div>
+          <div class="interest-item">Badminton en club (2 ans)</div>
+        </div>
+      </aside>
+
+      <!-- ===== MAIN CONTENT ===== -->
+      <main class="main-content">
+        <header class="main-header">
+          <h1 class="main-name">Eric <span>Fief</span></h1>
+          <div class="main-title">Développeur Full-Stack · Java / Spring Boot · React · Angular · Docker</div>
+          <p class="profile-text">
+            Développeur Full-Stack avec <strong>3 ans d'alternance chez Worldline</strong>, passionné par le
+            développement web, l'optimisation des performances et les bonnes pratiques. Maîtrise de l'écosystème
+            <strong>Java / Spring Boot</strong> et <strong>JavaScript / Node.js</strong>, avec une solide
+            expérience en maintenance applicative, sécurité et déploiement Docker.
+          </p>
+        </header>
+
+        <div class="section">
+          <h2 class="section-title"><span class="number">01</span> Expérience professionnelle</h2>
+
+          <div class="exp-card">
+            <div class="exp-header">
+              <div class="exp-role">Développeur Full-Stack</div>
+              <div class="exp-period">Sept 2022 → Sept 2025</div>
+            </div>
+            <div class="exp-company">Worldline — Seclin</div>
+            <div class="exp-duration">Alternance · 3 ans</div>
+            <ul class="exp-list">
+              <li>Évolution de projets existants : nouvelles fonctionnalités et amélioration de l'ergonomie</li>
+              <li>Renforcement de la maintenabilité et application des bonnes pratiques de développement</li>
+              <li>Correction de failles de sécurité et optimisation des performances applicatives</li>
+              <li>Front-end avec JSP et EmberJS, back-end avec Spring Boot, déploiement via Docker</li>
+              <li>Gestion de la base de données : scripts de migration, nettoyage et évolutions de schéma</li>
+            </ul>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-header">
+              <div class="exp-role">Développeur — Stage</div>
+              <div class="exp-period">Janv → Févr 2022</div>
+            </div>
+            <div class="exp-company">GameWork — Somain</div>
+            <div class="exp-duration">Stage · 5 semaines</div>
+            <ul class="exp-list">
+              <li>Gestionnaire de fichiers pour le stockage et partage de documents (vidéo, photo, PDF)</li>
+              <li>Mise en pratique de Node.js et Socket.io en environnement professionnel</li>
+            </ul>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-header">
+              <div class="exp-role">Développeur — Stage</div>
+              <div class="exp-period">Mai → Juin 2021</div>
+            </div>
+            <div class="exp-company">GameWork — Somain</div>
+            <div class="exp-duration">Stage · 5 semaines</div>
+            <ul class="exp-list">
+              <li>Création d'un site internet complet avec PHP, JavaScript et CSS</li>
+              <li>Apprentissage des méthodologies SASS et BEM</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title"><span class="number">02</span> Formation</h2>
+          <div class="edu-grid">
+            <div class="edu-card">
+              <div>
+                <div class="edu-diploma">Expert en informatique et système d'information</div>
+                <div class="edu-school">EPSI, Arras</div>
+              </div>
+              <div class="edu-year">2023 — 2025</div>
+            </div>
+            <div class="edu-card">
+              <div>
+                <div class="edu-diploma">Licence DEVOPS — Concepteur développeur d'applications</div>
+                <div class="edu-school">EPSI, Arras</div>
+              </div>
+              <div class="edu-year">2022 — 2023</div>
+            </div>
+            <div class="edu-card">
+              <div>
+                <div class="edu-diploma">BTS SIO — Services Informatiques aux Organisations</div>
+                <div class="edu-school">Lycée Guy-Mollet, Arras</div>
+              </div>
+              <div class="edu-year">2020 — 2022</div>
+            </div>
+            <div class="edu-card">
+              <div>
+                <div class="edu-diploma">BAC Pro Commerce</div>
+                <div class="edu-school">Lycée Henri Senez, Hénin-Beaumont</div>
+              </div>
+              <div class="edu-year">2019 — 2020</div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
