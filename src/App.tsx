@@ -1,4 +1,6 @@
+import About from "./components/About";
 import Contact from "./components/Contact";
+import CV from "./components/CV";
 import Experience from "./components/Experiences";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
@@ -9,33 +11,36 @@ import Skills from "./components/Skills";
 function App() {
   const projectsData = [
     {
-      title: "NovaBank API (SOON)",
+      title: "NovaBank (SOON)",
       description:
-        "API bancaire complète avec gestion utilisateurs, comptes, virements, 2FA et historique, sécurisée avec JWT et Spring Security.",
+        "Application bancaire complète : API sécurisée avec gestion utilisateurs, comptes et virements, couplée à une interface web responsive avec Angular Material et NgRx.",
       tech: [
         "Java 25",
         "Spring Boot 3+",
-        "PostgreSQL",
         "Spring Security",
         "JWT",
-        "Flyway",
-        "Swagger",
+        "PostgreSQL",
+        "Angular 18+",
+        "NgRx",
+        "Docker",
       ],
       link: "#",
     },
     {
-      title: "NovaBank UI (SOON)",
+      title: "CandiFlow",
       description:
-        "Interface utilisateur web responsive pour gérer comptes, virements et notifications, avec Angular Material et NgRx.",
+        "SaaS de suivi de candidatures : tableau de bord, gestion des statuts (Applied, Interview, Offer, Rejected), filtres, pagination et statistiques. Authentification JWT avec rôles USER / ADMIN.",
       tech: [
-        "Angular 18+",
-        "Angular Material",
-        "NgRx",
-        "Responsive Design",
-        "HTTP Interceptors",
-        "Guards de routes",
+        "Java 25",
+        "Spring Boot 3+",
+        "Spring Security",
+        "JWT",
+        "PostgreSQL",
+        "React",
+        "Docker",
+        "Swagger",
       ],
-      link: "#",
+      link: "https://github.com/ShinWolf/CandiFlow",
     },
     {
       title: "TaskManager (SOON)",
@@ -47,9 +52,9 @@ function App() {
         "PostgreSQL",
         "Spring Security",
         "JWT",
-        "Flyway",
         "Swagger",
         "React",
+        "Docker",
       ],
       link: "#",
     },
@@ -86,12 +91,14 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-gray-100">
+    <div className="min-h-screen bg-zinc-900 text-gray-100">
       <Navbar />
       <Hero />
+      <About />
       <Projects projects={projectsData} />
       <Skills skills={skillsData} />
       <Experience experience={experienceData} />
+      <CV />
       <Contact />
       <Footer />
     </div>
